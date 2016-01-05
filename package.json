@@ -1,0 +1,25 @@
+{
+  "name": "chrome-tdk-panel",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src.js",
+  "scripts": {
+    "build": "babel src.js --out-file min.js && uglifyjs min.js -o min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsuyoshiwada/chrome-tdk-panel.git"
+  },
+  "author": "tsuyoshiwada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tsuyoshiwada/chrome-tdk-panel/issues"
+  },
+  "homepage": "https://github.com/tsuyoshiwada/chrome-tdk-panel#readme",
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015": "^6.3.13",
+    "uglify-js": "^2.6.1"
+  }
+}
