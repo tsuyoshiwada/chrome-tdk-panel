@@ -5,39 +5,21 @@
     return document.querySelector(selector);
   }
 
-  function setStyles($el, props) {
-    Object.keys(props).forEach(prop => {
-      $el.style[prop] = props[prop];
-    });
+  function className(str) {
+    return ID + str;
   }
 
-  function createElement(tagName, html, styles) {
+  function createElement(tagName, html) {
     const $el = document.createElement(tagName);
     $el.innerHTML = html;
-    setStyles($el, styles);
     return $el;
   }
 
   function createRowElement(title, content) {
-    const $el = createElement("div", "", {
-      color: "#333",
-      fontFamily: "sans-serif",
-      fontWeight: "normal",
-      fontSize: "14px"
-    });
-
-    const $strong = createElement("strong", title, {
-      display: "inline-block",
-      width: "100px",
-      textAlign: "right",
-      fontWeight: "bold"
-    });
-
-    const $span = createElement("span", content, {});
-
-    $el.appendChild($strong);
-    $el.appendChild($span);
-
+    const $el = createElement("div", ```
+    <strong>${title}</strong><span>${content}</span>
+    ```);
+    $el.className = className("row");
     return $el;
   }
 
@@ -46,40 +28,26 @@
   }
 
   function addPanel() {
-    const $panel = createElement("div", "", {
-      position: "fixed",
-      top: 0,
-      right: 0,
-      zIndex: 10000,
-      padding: "15px 30px 15px 15px",
-      background: "#fff",
-      boxShadow: "0 0 6px rgba(0, 0, 0, .4)",
-    });
-
-    const $close = createElement("div", "&times;", {
-      position: "absolute",
-      top: "10px",
-      right: "10px",
-      display: "block",
-      width: "15px",
-      height: "15px",
-      backgroundColor: "#ccc",
-      border: "none",
-      borderRadius: "50%",
-      color: "#fff",
-      fontSize: "14px",
-      textAlign: "center",
-      lineHeight: "15px",
-      verticalAlign: "middle",
-      cursor: "pointer"
-    });
-
-    $close.id = `${ID}__close`;
-    $close.addEventListener("click", removePanel, false);
-
+    const $panel = createElement("div", "");
+    const $close = createElement("div", "&times;");
     const $title = $("title");
     const $description = $("meta[name='description']");
     const $keywords = $("meta[name='keywords']");
+
+    $panel.innerHTML = ```
+    <style>
+    #${ID} {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 10000;
+      background: rgba(38, 50, 56, 0.9);
+    }
+    </style>
+    ```;
+
+    $close.id = className("close");
+    $close.addEventListener("click", removePanel, false);
 
     if ($title) $panel.appendChild(createRowElement("Title : ", $title.textContent));
     if ($description) $panel.appendChild(createRowElement("Description : ", $description.getAttribute("content")));
