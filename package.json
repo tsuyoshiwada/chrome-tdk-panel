@@ -1,11 +1,10 @@
 {
-  "name": "chrome-tdk-panel",
+  "name": "tdk-panel",
   "version": "0.0.1",
   "description": "",
   "main": "src.js",
   "scripts": {
-    "build": "babel src.js --out-file min.js && uglifyjs min.js -o min.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src.js --out-file min.js && uglifyjs min.js -o min.js"
   },
   "repository": {
     "type": "git",
