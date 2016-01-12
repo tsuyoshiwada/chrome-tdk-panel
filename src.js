@@ -43,6 +43,10 @@
       background: rgba(38, 50, 56, .96);
       border-radius: 3px;
       box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+      text-align: left;
+    }
+    #${ID} * {
+      text-align: inherit;
     }
     #${p("close")} {
       position: absolute;
